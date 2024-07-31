@@ -36,4 +36,18 @@ router.post('/get-short-url', async (req, res) => {
 
 app.use('/', router);
 
+app.get('/:shortId', async (req, res) => {
+    const shortId = req.params.shortId;
+
+    const entryResp = await URL.findOneAndUpdate({
+        shortId
+    }, {
+        $push: {
+            timesVisited: { timestamp: Date.now() }
+        }
+    });
+
+    res.redirect(entryResp.redirectUrl);
+})
+
 app.listen(3001, () => console.log('Server running at port 3001'));
