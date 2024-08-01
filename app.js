@@ -4,7 +4,6 @@ import URL from './models/url.js';
 import { connectToMongoDB } from './db-connect.js';
 
 const app = express();
-const router = express.Router();
 
 app.use(express.json());
 
@@ -12,7 +11,7 @@ connectToMongoDB('mongodb://127.0.0.1:27017/url-shortener')
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
-router.post('/get-short-url', async (req, res) => {
+app.post('/get-short-url', async (req, res) => {
     const { long_url } = req.body;
 
     if (long_url) {
@@ -34,7 +33,7 @@ router.post('/get-short-url', async (req, res) => {
     }
 });
 
-router.get('/url/analytics/:id', async (req, res) => {
+app.get('/url/analytics/:id', async (req, res) => {
     const shortId = req.params.id;
 
     if (shortId) {
@@ -50,8 +49,6 @@ router.get('/url/analytics/:id', async (req, res) => {
         return res.status(400).json({ message: 'Url is required!' });
     }
 });
-
-app.use('/', router);
 
 app.get('/:shortId', async (req, res) => {
     const shortId = req.params.shortId;
