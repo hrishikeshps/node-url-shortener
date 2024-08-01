@@ -34,6 +34,23 @@ router.post('/get-short-url', async (req, res) => {
     }
 });
 
+router.get('/url/analytics/:id', async (req, res) => {
+    const shortId = req.params.id;
+
+    if (shortId) {
+        try {
+            const analyticsRes = await URL.findOne({shortId})
+
+            return res.status(200).json({ viewedTime: analyticsRes.timesVisited.length, history: analyticsRes.timesVisited });
+        } catch (error) {
+            console.error('Error fetching history', error);
+            return res.status(500).json({ message: 'Internal server error' });
+        }
+    } else {
+        return res.status(400).json({ message: 'Url is required!' });
+    }
+});
+
 app.use('/', router);
 
 app.get('/:shortId', async (req, res) => {
