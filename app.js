@@ -60,7 +60,6 @@ app.get('/:shortId', async (req, res) => {
             timesVisited: { timestamp: Date.now() }
         }
     });
-
     res.redirect(entryResp.redirectUrl);
 })
 
