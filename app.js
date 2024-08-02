@@ -6,6 +6,8 @@ import { connectToMongoDB } from './db-connect.js';
 const app = express();
 
 app.use(express.json());
+app.set("view engine", "ejs");
+
 
 connectToMongoDB('mongodb://127.0.0.1:27017/url-shortener')
     .then(() => console.log('Connected to MongoDB'))
@@ -61,6 +63,10 @@ app.get('/:shortId', async (req, res) => {
         }
     });
     res.redirect(entryResp.redirectUrl);
+})
+
+app.get('/', (req, res) => {
+    res.render("index")
 })
 
 app.listen(3001, () => console.log('Server running at port 3001'));
