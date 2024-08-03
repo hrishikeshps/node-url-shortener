@@ -23,6 +23,10 @@ connectToMongoDB('mongodb://127.0.0.1:27017/url-shortener')
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 // Routes
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 app.post('/get-short-url', async (req, res) => {
     const { long_url } = req.body;
 
@@ -73,10 +77,6 @@ app.get('/:shortId', async (req, res) => {
         console.error('Error redirecting URL:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
-});
-
-app.get('/', (req, res) => {
-    res.render('index');
 });
 
 // Start the server
