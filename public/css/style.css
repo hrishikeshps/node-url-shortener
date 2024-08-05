@@ -9,11 +9,11 @@ body {
 }
 .container {
 	background-color: white;
-	padding: 2rem;
+	padding: 3rem 4rem !important;
 	border-radius: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	width: 100%;
-	max-width: 400px!important;
+	max-width: 600px!important;
 }
 h1 {
 	color: #FF8C00;
@@ -28,7 +28,10 @@ input {
 	border-radius: 5px;
 	font-size: 1rem;
 }
-button {
+input:focus-visible{
+	outline: none;
+}
+.btn-custom-primary {
 	background-color: #FF8C00;
 	color: white;
 	border: none;
@@ -38,6 +41,6 @@ button {
 	font-size: 1rem;
 	transition: background-color 0.3s ease;
 }
-button:hover {
+.btn-custom-primary:hover {
 	background-color: #FF7F00;
 }
