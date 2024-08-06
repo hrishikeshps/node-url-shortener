@@ -19,7 +19,10 @@ function createURL(){
     })
     .then(response => response.json())
     .then(data => {
-        console.log('data is here ==> ', data)
+        console.log('data is here ==> ', data);
+
+        const resultSection = document.getElementById('result-section')
+        resultSection.style.display = 'block'
     })
     .catch((err) => {
         console.error('Error: ', err)
