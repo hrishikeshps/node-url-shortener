@@ -26,6 +26,7 @@ function createURL(){
 
         const urlSection = document.getElementById('final-url-section')
         urlSection.innerText = `${window.location.origin}/${data.short_url}`
+        urlSection.href = `${window.location.origin}/${data.short_url}`
     })
     .catch((err) => {
         console.error('Error: ', err)
