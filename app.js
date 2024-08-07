@@ -57,6 +57,9 @@ app.get('/url/analytics/:id', async (req, res) => {
 
     try {
         const analyticsRes = await URL.findOne({ shortId });
+        if (!analyticsRes) {
+            return res.status(404).json({ message: 'URL not found' });
+        }
         res.status(200).json({ viewedTime: analyticsRes.timesVisited.length, history: analyticsRes.timesVisited });
     } catch (error) {
         console.error('Error fetching history:', error);
@@ -64,20 +67,28 @@ app.get('/url/analytics/:id', async (req, res) => {
     }
 });
 
-app.get('/:shortId', async (req, res) => {
+app.get('/:shortId([a-zA-Z0-9_-]{8})', async (req, res) => {
     const shortId = req.params.shortId;
-
+    
     try {
         const entryResp = await URL.findOneAndUpdate(
             { shortId },
             { $push: { timesVisited: { timestamp: Date.now() } } }
         );
+        if (!entryResp) {
+            return res.status(404).send('Short URL not found');
+        }
+        console.log('Redirecting to -->> ', entryResp.redirectUrl);
         res.redirect(entryResp.redirectUrl);
     } catch (error) {
         console.error('Error redirecting URL:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+// app.use((req, res) => {
+//     res.status(404).send('Page not found');
+// });
 
 // Start the server
 app.listen(3001, () => console.log('Server running at port 3001'));
