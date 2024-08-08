@@ -1,11 +1,15 @@
 console.log('Test says hello world!!!')
 
 function createURL(){
-    const long_url = document.getElementById("long_url").value
+    let long_url = document.getElementById("long_url").value
 
     if(long_url == ''){
         alert('Please provide a url!')
         return
+    }
+    
+    if (!long_url.includes('http://') && !long_url.includes('https://')) {
+        long_url = 'https://' + long_url
     }
 
     const apiUrl = '/get-short-url'
