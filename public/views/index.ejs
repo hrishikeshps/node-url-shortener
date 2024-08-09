@@ -8,9 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container text-center">
+    <!-- <div class="container text-center">
         <div id="main-section">
-            <h1 class="display-5 text-center mb-4">URLs Simpilified</h1>
+            <h1 class="display-5 text-center mb-4">URLs <mark>Simpilified</mark></h1>
             <input id="long_url" class="mb-4" type="text" placeholder="Enter URL">
             <button class="btn-custom-primary" onclick="createURL()">Create</button>
         </div>
@@ -18,7 +18,21 @@
             <h4>Simplied URL created successfully!</h4>
             <a id="final-url-section" target="_blank" href="javascript:void(0)"></a>
         </div>
-    </div>
+    </div> -->
+
+    <div class="container">
+        <div class="logo-container">
+          <h1 class="logo">URL Simplifier</h1>
+        </div>
+        <div class="input-container">
+          <input type="text" class="url-input" placeholder="Enter URL">
+          <button class="submit-btn">Simplify</button>
+        </div>
+        <div class="result-container hidden">
+          <div class="result-text">URL simplified successfully!</div>
+          <div class="simplified-url"></div>
+        </div>
+      </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="/js/script.js"></script>

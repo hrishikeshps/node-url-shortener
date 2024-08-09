@@ -1,4 +1,4 @@
-body {
+/* body {
 	font-family: 'Arial', sans-serif;
 	background-color: #FFF5E6!important;
 	display: flex;
@@ -43,4 +43,114 @@ input:focus-visible{
 }
 .btn-custom-primary:hover {
 	background-color: #FF7F00;
-}
+} */
+
+/* Color palette */
+:root {
+	--color1: #ccd5ae;
+	--color2: #e9edc9;
+	--color3: #fefae0;
+	--color4: #faedcd;
+	--color5: #d4a373;
+  }
+  
+  body {
+	margin: 0;
+	font-family: Arial, sans-serif;
+	background-color: var(--color1);
+	background-image: linear-gradient(to bottom, var(--color1), var(--color2));
+	background-size: cover;
+	background-attachment: fixed;
+  }
+  
+  .container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+  }
+  
+  .logo-container {
+	margin-bottom: 3rem;
+  }
+  
+  .logo {
+	color: var(--color5);
+	font-size: 4rem;
+	text-align: center;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 3rem;
+  }
+  
+  .url-input {
+	padding: 0.75rem 1.5rem;
+	font-size: 1.2rem;
+	border: none;
+	border-radius: 6px 0 0 6px;
+	background-color: var(--color3);
+	color: var(--color5);
+	width: 400px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submit-btn {
+	padding: 0.75rem 1.5rem;
+	font-size: 1.2rem;
+	border: none;
+	border-radius: 0 6px 6px 0;
+	background-color: var(--color5);
+	color: var(--color3);
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submit-btn:hover {
+	background-color: #b78b64;
+  }
+  
+  .result-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color4);
+	padding: 2.5rem;
+	border-radius: 8px;
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+	animation: slide-in 0.5s ease-in-out;
+  }
+  
+  .result-text {
+	font-size: 1.4rem;
+	font-weight: bold;
+	margin-bottom: 1.5rem;
+	color: var(--color5);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .simplified-url {
+	font-size: 1.3rem;
+	color: var(--color5);
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hidden {
+	display: none;
+  }
+  
+  @keyframes slide-in {
+	0% {
+	  transform: translateX(100%);
+	}
+	100% {
+	  transform: translateX(0);
+	}
+  }
